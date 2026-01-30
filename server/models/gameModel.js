@@ -19,7 +19,7 @@ const gameModel = {
 
     createGame: async (title, description, price, ownerId, filePath, imagePath) => {
         const query = `
-            INSERT INTO games (title, description, price, owner_id, file_path, image_path, status)
+            INSERT INTO public.games (title, description, price, owner_id, file_path, image_path, status)
             VALUES ($1, $2, $3, $4, $5, $6, 'pending')
             RETURNING ${gameModel.gameColumns}
         `;
@@ -29,7 +29,7 @@ const gameModel = {
     },
 
     getGameById: async (id) => {
-        const query = `SELECT ${gameModel.gameColumns} FROM games WHERE id = $1`;
+        const query = `SELECT ${gameModel.gameColumns} FROM public.games WHERE id = $1`;
         const result = await pool.query(query, [id]);
         return result.rows[0];
     },
@@ -37,7 +37,7 @@ const gameModel = {
     getGamesByOwner: async (ownerId) => {
         const query = `
             SELECT ${gameModel.gameColumns} 
-            FROM games 
+            FROM public.games 
             WHERE owner_id = $1 
             ORDER BY created_at DESC
         `;
@@ -48,7 +48,7 @@ const gameModel = {
     getGamesByStatus: async (status) => {
         const query = `
             SELECT ${gameModel.gameColumns}
-            FROM games
+            FROM public.games
             WHERE status = $1
             ORDER BY created_at DESC
         `;
@@ -58,7 +58,7 @@ const gameModel = {
 
     updateGameStatus: async (gameId, newStatus) => {
         const query = `
-            UPDATE games
+            UPDATE public.games
             SET status = $1
             WHERE id = $2
             RETURNING ${gameModel.gameColumns}
@@ -69,7 +69,7 @@ const gameModel = {
 
     increaseDownloadsCount: async (gameId) => {
         const query = `
-            UPDATE games
+            UPDATE public.games
             SET downloads_count = downloads_count + 1
             WHERE id = $1
             RETURNING ${gameModel.gameColumns}
@@ -93,9 +93,9 @@ const gameModel = {
                 g.rating_count AS "ratingCount", 
                 g.review_count AS "reviewCount",
                 g.created_at AS "createdAt"
-            FROM games g
-            JOIN order_items oi ON g.id = oi.game_id
-            JOIN orders o ON oi.order_id = o.id
+            FROM public.games g
+            JOIN public.order_items oi ON g.id = oi.game_id
+            JOIN public.orders o ON oi.order_id = o.id
             WHERE o.user_id = $1
             ORDER BY o.created_at DESC
         `;
@@ -107,8 +107,8 @@ const gameModel = {
         const query = `
             SELECT EXISTS (
                 SELECT 1
-                FROM orders o
-                JOIN order_items oi ON o.id = oi.order_id
+                FROM public.orders o
+                JOIN public.order_items oi ON o.id = oi.order_id
                 WHERE o.user_id = $1 AND oi.game_id = $2
             ) AS hasAccess;
         `;
@@ -119,7 +119,7 @@ const gameModel = {
 
     updateGame: async (gameId, title, description, price) => {
         const query = `
-            UPDATE games 
+            UPDATE public.games 
             SET title = $1, description = $2, price = $3
             WHERE id = $4
             RETURNING ${gameModel.gameColumns}
@@ -130,7 +130,7 @@ const gameModel = {
     },
     
     getAllGames: async () => {
-        const query = `SELECT ${gameModel.gameColumns} FROM games ORDER BY created_at DESC`;
+        const query = `SELECT ${gameModel.gameColumns} FROM public.games ORDER BY created_at DESC`;
         const result = await pool.query(query);
         return result.rows;
     },
@@ -141,10 +141,10 @@ const gameModel = {
             SELECT 
                 g.*,
                 COALESCE(r.avg_rating, 0) AS avg_rating
-            FROM games g
+            FROM public.games g
             LEFT JOIN (
                 SELECT game_id, AVG(rating) AS avg_rating
-                FROM reviews
+                FROM public.reviews
                 GROUP BY game_id
             ) r ON r.game_id = g.id
             WHERE g.status = 'active'
@@ -195,7 +195,7 @@ const gameModel = {
 
     addRating: async (gameId, rating) => {
         const query = `
-            UPDATE games
+            UPDATE public.games
             SET
                 rating_count = rating_count + $1,
                 review_count = review_count + 1

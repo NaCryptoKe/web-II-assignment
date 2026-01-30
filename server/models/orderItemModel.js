@@ -4,7 +4,7 @@ const gameModel = require('./gameModel');
 const orderItemModel = {
     createOrderItem: async (orderId, gameId, priceAtPurchase, client = pool) => {
         const query = `
-            INSERT INTO order_items (order_id, game_id, price_at_purchase)
+            INSERT INTO public.order_items (order_id, game_id, price_at_purchase)
             VALUES ($1, $2, $3)
             RETURNING id, order_id AS "orderId", game_id AS "gameId", price_at_purchase AS "priceAtPurchase"
         `;
@@ -31,7 +31,7 @@ const orderItemModel = {
                 order_id AS "orderId", 
                 game_id AS "gameId", 
                 price_at_purchase AS "priceAtPurchase"
-            FROM order_items
+            FROM public.order_items
             WHERE id = $1
         `;
         const values = [orderItemId];
@@ -51,8 +51,8 @@ const orderItemModel = {
                 oi.game_id AS "gameId", 
                 oi.price_at_purchase AS "priceAtPurchase", 
                 g.title 
-            FROM order_items oi
-            JOIN games g ON oi.game_id = g.id
+            FROM public.order_items oi
+            JOIN public.games g ON oi.game_id = g.id
             WHERE oi.order_id = $1
         `;
         const values = [orderId];
@@ -67,7 +67,7 @@ const orderItemModel = {
 
     deleteOrderItem: async (orderItemId) => {
         const query = `
-            DELETE FROM order_items
+            DELETE FROM public.order_items
             WHERE id = $1
             RETURNING id
         `;

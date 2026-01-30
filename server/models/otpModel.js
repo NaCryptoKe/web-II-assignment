@@ -3,7 +3,7 @@ const pool = require('../config/db');
 const otpModel = {
     createOTP: async (email, code, expiresAt) => {
         const query = `
-            INSERT INTO otp (email, code, expires_at)
+            INSERT INTO public.otp (email, code, expires_at)
             VALUES ($1, $2, $3)
             RETURNING id, email, code, expires_at AS "expiresAt", created_at AS "createdAt"
         `;
@@ -19,7 +19,7 @@ const otpModel = {
 
     getOTPByEmail: async (email) => {
         const query = `
-            SELECT id, email, code, expires_at AS "expiresAt", created_at AS "createdAt" FROM otp 
+            SELECT id, email, code, expires_at AS "expiresAt", created_at AS "createdAt" FROM public.otp 
             WHERE email = $1 
             ORDER BY created_at DESC 
             LIMIT 1
@@ -35,7 +35,7 @@ const otpModel = {
     },
 
     deleteOTPByEmail: async (email) => {
-        const query = `DELETE FROM otp WHERE email = $1 RETURNING id, email, code, expires_at AS "expiresAt", created_at AS "createdAt"`;
+        const query = `DELETE FROM public.otp WHERE email = $1 RETURNING id, email, code, expires_at AS "expiresAt", created_at AS "createdAt"`;
         const values = [email];
 
         try {

@@ -3,7 +3,7 @@ const pool = require('../config/db');
 const tagModel = {
     createTag: async (name) => {
         const query = `
-            INSERT INTO tags (name)
+            INSERT INTO public.tags (name)
             VALUES ($1)
             RETURNING id, name
         `;
@@ -18,7 +18,7 @@ const tagModel = {
     },
 
     deleteTag: async (tagId) => {
-        const query = `DELETE FROM tags WHERE id = $1 RETURNING id, name`;
+        const query = `DELETE FROM public.tags WHERE id = $1 RETURNING id, name`;
         const values = [tagId];
 
         try {
@@ -31,7 +31,7 @@ const tagModel = {
 
     getAllTags: async () => {
         const query = `
-            SELECT id, name FROM tags ORDER BY name ASC
+            SELECT id, name FROM public.tags ORDER BY name ASC
         `;
 
         try {
@@ -43,7 +43,7 @@ const tagModel = {
     },
     
     getTagByName: async (name) => {
-        const query = `SELECT id, name FROM tags WHERE name = $1`;
+        const query = `SELECT id, name FROM public.tags WHERE name = $1`;
         const values = [name];
 
         try {
@@ -60,7 +60,7 @@ const tagModel = {
     
     addTagToGame: async (gameId, tagId) => {
         const query = `
-            INSERT INTO game_tags (game_id, tag_id)
+            INSERT INTO public.game_tags (game_id, tag_id)
             VALUES ($1, $2)
             RETURNING game_id AS "gameId", tag_id AS "tagId"
         `;
@@ -79,7 +79,7 @@ const tagModel = {
 
     removeTagFromGame: async (gameId, tagId) => {
         const query = `
-            DELETE FROM game_tags 
+            DELETE FROM public.game_tags 
             WHERE game_id = $1 AND tag_id = $2
             RETURNING game_id AS "gameId", tag_id AS "tagId"
         `;
@@ -95,7 +95,7 @@ const tagModel = {
 
     getAllGameTags: async (gameId) => {
         const query = `
-            SELECT game_id AS "gameId", tag_id AS "tagId" FROM game_tags
+            SELECT game_id AS "gameId", tag_id AS "tagId" FROM public.game_tags
             WHERE game_id = $1
         `;
         const values = [gameId];

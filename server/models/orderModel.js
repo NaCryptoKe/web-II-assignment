@@ -3,7 +3,7 @@ const pool = require('../config/db');
 const orderModel = {
     createOrder: async (userId, totalPrice, client = pool) => {
         const query = `
-            INSERT INTO orders (user_id, total_price)
+            INSERT INTO public.orders (user_id, total_price)
             VALUES ($1, $2)
             RETURNING id, user_id AS "userId", total_price AS "totalPrice", created_at AS "createdAt"
         `;
@@ -20,7 +20,7 @@ const orderModel = {
     getOrderById: async (orderId) => {
         const query = `
             SELECT id, user_id AS "userId", total_price AS "totalPrice", created_at AS "createdAt"
-            FROM orders
+            FROM public.orders
             WHERE id = $1
         `;
         const values = [orderId];
@@ -36,7 +36,7 @@ const orderModel = {
     getOrdersByUserId: async (userId) => {
         const query = `
             SELECT id, user_id AS "userId", total_price AS "totalPrice", created_at AS "createdAt"
-            FROM orders
+            FROM public.orders
             WHERE user_id = $1
             ORDER BY created_at DESC
         `;
@@ -55,7 +55,7 @@ const orderModel = {
             SELECT 
                 DATE(created_at) as "saleDate", 
                 SUM(total_price) as "dailyTotal"
-            FROM orders
+            FROM public.orders
             GROUP BY DATE(created_at)
             ORDER BY "saleDate" DESC
         `;
