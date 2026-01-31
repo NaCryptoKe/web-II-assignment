@@ -12,7 +12,7 @@ const app = express();
 */
 app.use(
   cors({
-    origin:  "https://axum-arcade.vercel.app/",
+    origin:  "https://axum-arcade.vercel.app",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
