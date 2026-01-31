@@ -1,12 +1,10 @@
-// src/services/userService.js
+
 import { apiRequest } from "../api/client";
 
-/**
- * Interacts with userController.js via userRoutes.js
- */
+
 
 export async function updateProfile(data) {
-    return apiRequest("/user/profile", { 
+    return apiRequest("/users/profile", { 
         method: "PUT", 
         body: JSON.stringify(data) 
     });
@@ -19,9 +17,9 @@ export const getUserById = (id) => {
 };
 
 export async function updatePassword(data) {
-    return apiRequest("/user/password", { 
+    return apiRequest("/users/password", { 
         method: "PUT", 
-        body: JSON.stringify(data) // expects { oldPassword, newPassword }
+        body: JSON.stringify(data) 
     });
 }
 

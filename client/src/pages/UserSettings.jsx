@@ -1,4 +1,4 @@
-// src/pages/UserSettings.jsx
+
 import React, { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { useUser } from '../hooks/useUser';
@@ -20,6 +20,7 @@ const UserSettings = () => {
     const handlePasswordUpdate = async (e) => {
         e.preventDefault();
         const res = await updatePassword(passwords);
+        console.log(res)
         if (res.success) {
             alert("Password updated!");
             setPasswords({ oldPassword: '', newPassword: '' });

@@ -30,10 +30,16 @@ const updateProfile = async (req, res) => {
     }
 };
 
+/**
+ * Controller to handle password updates
+ * Ensures old password is correct before hashing and saving the new one
+ */
 const updatePassword = async (req, res) => {
     const { oldPassword, newPassword } = req.body;
     const userId = req.user.userId;
+    const userEmail = req.user.email; // Extracted from your auth middleware
 
+    // 1. Validation
     if (!oldPassword || !newPassword) {
         return res.status(400).json({
             success: false,
@@ -43,7 +49,10 @@ const updatePassword = async (req, res) => {
     }
 
     try {
-        const user = await userModel.login(req.user.email); // Use login to get password hash
+        // 2. Fetch user to get the current stored hash
+        // Note: Ensure userModel.login returns the field 'password_hash'
+        const user = await userModel.login(userEmail); 
+        console.log(user)
 
         if (!user) {
             return res.status(404).json({
@@ -52,7 +61,12 @@ const updatePassword = async (req, res) => {
             });
         }
 
-        const isMatch = await bcrypt.compare(oldPassword, user.passwordHash);
+        // 3. Compare old password with stored hash
+        // IMPORTANT: Check if your DB returns 'password_hash' or 'passwordHash'
+        const currentHash = user.passwordHash;
+        
+        const isMatch = await bcrypt.compare(oldPassword, currentHash);
+        console.log(isMatch)
 
         if (!isMatch) {
             return res.status(401).json({
@@ -62,15 +76,28 @@ const updatePassword = async (req, res) => {
             });
         }
 
+        // 4. Hash the new password
         const saltRounds = 10;
         const newPasswordHash = await bcrypt.hash(newPassword, saltRounds);
 
-        await userModel.updatePassword(userId, newPasswordHash);
+        // 5. Execute Update
+        const result = await userModel.updatePassword(userId, newPasswordHash);
 
-        res.status(200).json({
-            success: true,
-            message: "Password updated successfully."
-        });
+        // 6. Final Response
+        if (result) {
+            console.log(`Password updated successfully for User ID: ${userId}`);
+            return res.status(200).json({
+                success: true,
+                message: "Password updated successfully."
+            });
+        } else {
+            return res.status(400).json({
+                success: false,
+                message: "Failed to update password. User might not exist.",
+                errors: []
+            });
+        }
+
     } catch (error) {
         console.error("Update Password Error:", error);
         res.status(500).json({

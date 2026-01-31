@@ -5,9 +5,9 @@ export async function apiRequest(path, options = {}) {
         ...(options.headers || {}),
     };
 
-    // 🔥 CRITICAL FIX
+    
     if (options.body instanceof FormData) {
-        // Let the browser set Content-Type with boundary
+        
         delete headers["Content-Type"];
     } else if (options.body) {
         headers["Content-Type"] = "application/json";

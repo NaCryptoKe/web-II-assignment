@@ -1,4 +1,4 @@
-// src/pages/Home.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useGame } from '../hooks/useGame';
 import { useNavigate } from 'react-router-dom';

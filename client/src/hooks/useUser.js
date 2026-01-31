@@ -1,5 +1,5 @@
-// src/hooks/useUser.js
-import { useState, useCallback } from 'react'; // Added useCallback here
+
+import { useState, useCallback } from 'react'; 
 import { useAuthContext } from '../context/AuthContext';
 import * as userService from '../services/userService';
 
@@ -27,6 +27,7 @@ export const useUser = () => {
         setError(null);
         try {
             const response = await userService.updateProfile(data);
+            console.log('HELLO', response)
             if (response.success) {
                 setUser(prev => ({ ...prev, ...response.data }));
             } else {

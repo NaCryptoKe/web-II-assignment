@@ -1,19 +1,6 @@
 # Project Title
 
-A brief description of your project.
-
-## Table of Contents
-
-- [Project Title](#project-title)
-- [Description](#description)
-- [Features](#features)
-- [Technologies](#technologies)
-- [Setup and Installation](#setup-and-installation)
-  - [Client](#client)
-  - [Server](#server)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+A brief description of our project.
 
 ## Description
 

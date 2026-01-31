@@ -1,22 +1,20 @@
-/* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
 :root {
-    /* Brand Colors */
-    --primary-coral: #E5C1BD;
+    
+    --primary-coral: #ed503f;
     --accent-lime: #B6BE9C;
     --accent-blue: #7B9E87;
     --off-white: #D2D0BA;
     --deep-navy: #5E747F;
 
-    /* Theme Variables - Now Locked to Dark */
+    
     --bg-color: #212738;
-    --text-main: #EDF2EF;
-    --text-muted: #abb2bf;
-    --card-bg: #2b3245; /* Slightly lighter navy for cards to pop against bg */
+    --text-main: #ffffff;
+    --text-muted: #d5e3fd;
+    --card-bg: #2b3245; 
 }
 
-/* THE STICKY FOOTER FIX */
 html, body {
     height: 100%;
     margin: 0;
@@ -33,7 +31,6 @@ main {
     flex: 1 0 auto;
 }
 
-/* Global Reset & Typography */
 * {
     box-sizing: border-box;
 }
@@ -61,7 +58,6 @@ a:hover {
     color: var(--accent-lime);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }

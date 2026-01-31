@@ -1,4 +1,4 @@
-// src/pages/Dashboard.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { useGame } from '../hooks/useGame';
@@ -33,7 +33,7 @@ const Dashboard = () => {
                 </button>
             </header>
 
-            {/* Profile Overview Card */}
+            
             <div className="profile-card">
                 <h3>Welcome back, <span className="text-lime">{user?.username}</span></h3>
                 <div className="profile-details">
@@ -43,7 +43,7 @@ const Dashboard = () => {
                 <Link to="/settings" className="settings-link">Edit Profile & Password</Link>
             </div>
 
-            {/* Developer Section: Uploaded Games */}
+            
             <section className="dev-section">
                 <div className="section-header">
                     <h2>Your Uploaded Games (Dev View)</h2>
@@ -59,7 +59,7 @@ const Dashboard = () => {
                         {myGames.map(game => (
                             <div key={game.id} className="dev-game-card">
                                 <div className="card-thumb-container">
-                                    <img src={game.image_url || 'https://via.placeholder.com/150'} alt={game.title} />
+                                    <img src={game.imagePath || 'https://via.placeholder.com/150'} alt={game.title} />
                                 </div>
                                 <div className="dev-card-content">
                                     <h4>{game.title}</h4>

@@ -1,4 +1,4 @@
-// src/pages/EditGamePage.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGame } from '../hooks/useGame';

@@ -1,6 +1,5 @@
 
 
-/* --- LAYOUT --- */
 .admin-container {
     padding: 30px;
     max-width: 1400px;
@@ -28,7 +27,6 @@
     margin-bottom: 20px;
 }
 
-/* --- TABS --- */
 .tab-header {
     display: flex;
     gap: 10px;
@@ -47,7 +45,7 @@
     border-radius: 8px 8px 0 0;
     transition: all 0.2s ease;
     position: relative;
-    bottom: -2px; /* Overlap border */
+    bottom: -2px; 
 }
 
 .tab-btn:hover {
@@ -76,7 +74,6 @@
     color: var(--deep-navy);
 }
 
-/* --- GAMES GRID --- */
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -96,7 +93,6 @@
     font-size: 1.2rem;
 }
 
-/* --- GAME CARD --- */
 .game-card {
     background-color: var(--off-white);
     border-radius: 8px;
@@ -158,7 +154,6 @@
     flex: 1;
 }
 
-/* --- BUTTONS --- */
 .btn-group {
     display: flex;
     gap: 10px;
@@ -191,7 +186,6 @@
     color: var(--off-white);
 }
 
-/* --- USERS TABLE --- */
 .user-scroll-area {
     max-height: 350px;
     overflow-y: auto;
@@ -243,7 +237,6 @@
     color: var(--text-muted);
 }
 
-/* --- CHART & DATE CONTROLS --- */
 .filter-controls {
     display: flex;
     gap: 20px;
@@ -256,7 +249,6 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Stylized Date Input Wrapper */
 .date-group {
     display: flex;
     flex-direction: column;
@@ -271,7 +263,6 @@
     color: var(--deep-navy);
 }
 
-/* The actual stylized input */
 .date-input {
     padding: 10px 15px;
     border-radius: 8px;
