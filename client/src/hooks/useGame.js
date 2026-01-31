@@ -43,10 +43,29 @@ export const useGame = () => {
         }
     }, []);
 
+    const uploadGame = useCallback(async (gameData) => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await gameService.uploadGame(gameData);
+            if (!response.success) {
+                setError(response.message);
+            }
+            return response;
+        } catch (err) {
+            const errorMessage = err.message || "Failed to upload game";
+            setError(errorMessage);
+            return { success: false, message: errorMessage };
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
     return { 
         ...gameService, 
         fetchHomeData, 
         fetchGameDetails,
+        uploadGame,
         loading, 
         error 
     };

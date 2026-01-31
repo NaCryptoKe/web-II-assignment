@@ -12,8 +12,7 @@ const app = express();
 */
 app.use(
   cors({
-    origin:  "https://axum-arcade.vercel.app",
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin:  "http://localhost:5173",
     credentials: true,
   })
 );

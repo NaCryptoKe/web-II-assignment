@@ -1,4 +1,4 @@
-const API_BASE = "https://web-ii-assignment-production.up.railway.app/api";
+const API_BASE = "http://localhost:5000/api";
 
 export async function apiRequest(path, options = {}) {
     const headers = {

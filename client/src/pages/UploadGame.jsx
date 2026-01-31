@@ -33,6 +33,7 @@ const UploadGamePage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('hello')
         if (!gameFile || !imageFile) return setError("Files missing");
 
         const data = new FormData();
