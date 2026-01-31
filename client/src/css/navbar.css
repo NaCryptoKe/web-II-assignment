@@ -5,12 +5,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
-    background-color: #212738; /* Your main dark color */
+    background-color: var(--deep-navy); /* Your main dark color */
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border-bottom: 2px solid #57C4E5; /* Your Sky Blue accent */
+    border-bottom: 2px solid var(--accent-blue); /* Your Sky Blue accent */
 }
 
 /* Logo Styling */
@@ -20,7 +20,7 @@
 }
 
 .nav-logo span {
-    color: #EDF2EF; /* Off-white */
+    color: var(--off-white); /* Off-white */
 }
 
 /* Common Links */
@@ -31,7 +31,7 @@
 }
 
 .nav-item {
-    color: #EDF2EF;
+    color: var(--off-white);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
@@ -40,7 +40,7 @@
 }
 
 .nav-item:hover {
-    color: #57C4E5;
+    color: var(--accent-blue);
 }
 
 /* Cart Badge */
@@ -50,8 +50,8 @@
 }
 
 .cart-badge {
-    background: #D1D646; /* Your Lime color */
-    color: #212738;
+    background: var(--accent-lime); /* Your Lime color */
+    color: var(--deep-navy);
     padding: 2px 8px;
     border-radius: 20px;
     font-size: 0.75rem;
@@ -62,7 +62,7 @@
 
 /* Buttons */
 .nav-signup-btn {
-    background-color: #F97068; /* Your Coral color */
+    background-color: var(--primary-coral); /* Your Coral color */
     color: white;
     text-decoration: none;
     padding: 8px 20px;
@@ -77,17 +77,17 @@
 }
 
 .nav-admin-btn {
-    color: #F97068;
+    color: var(--primary-coral);
     text-decoration: none;
     font-weight: bold;
-    border: 2px solid #F97068;
+    border: 2px solid var(--primary-coral);
     padding: 6px 14px;
     border-radius: 6px;
     transition: all 0.3s;
 }
 
 .nav-admin-btn:hover {
-    background-color: #F97068;
+    background-color: var(--primary-coral);
     color: white;
 }
 

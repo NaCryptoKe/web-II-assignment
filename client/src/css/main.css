@@ -3,11 +3,11 @@
 
 :root {
     /* Brand Colors */
-    --primary-coral: #F97068;
-    --accent-lime: #D1D646;
-    --accent-blue: #57C4E5;
-    --off-white: #EDF2EF;
-    --deep-navy: #212738;
+    --primary-coral: #E5C1BD;
+    --accent-lime: #B6BE9C;
+    --accent-blue: #7B9E87;
+    --off-white: #D2D0BA;
+    --deep-navy: #5E747F;
 
     /* Theme Variables - Now Locked to Dark */
     --bg-color: #212738;

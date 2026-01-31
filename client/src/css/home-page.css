@@ -16,7 +16,7 @@
     overflow: hidden;
     transition: transform 0.3s ease;
     /* Using Sky Blue for a subtle container edge */
-    border: 1px solid #57C4E5;
+    border: 1px solid var(--accent-blue);
 }
 
 .featured-section:hover {
@@ -40,9 +40,9 @@
     left: 0;
     right: 0;
     /* Gradient transitions from transparent to your Deep Navy (#212738) */
-    background: linear-gradient(transparent, #212738);
+    background: linear-gradient(transparent, var(--deep-navy));
     padding: 40px 20px 20px;
-    color: #EDF2EF; /* Off-White */
+    color: var(--off-white); /* Off-White */
 }
 
 /* Row Containers */
@@ -54,7 +54,7 @@
     color: var(--accent-blue);
     margin-bottom: 20px;
     font-size: 1.5rem;
-    border-left: 4px solid #F97068; /* Coral Accent */
+    border-left: 4px solid var(--primary-coral); /* Coral Accent */
     padding-left: 15px;
 }
 
@@ -65,7 +65,7 @@
     gap: 20px;
     padding-bottom: 15px;
     scrollbar-width: thin;
-    scrollbar-color: #57C4E5 transparent;
+    scrollbar-color: var(--accent-blue) transparent;
 }
 
 /* Custom Scrollbar for Chrome/Safari */
@@ -74,7 +74,7 @@
 }
 
 .game-row::-webkit-scrollbar-thumb {
-    background: #57C4E5; /* Sky Blue */
+    background: var(--accent-blue); /* Sky Blue */
     border-radius: 10px;
 }
 
@@ -83,22 +83,22 @@
     cursor: pointer;
     min-width: 200px;
     /* Using your Deep Navy for card background to stand out against light mode or blend in dark */
-    background-color: #212738;
+    background-color: var(--deep-navy);
     border-radius: 10px;
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 2px solid #57C4E5; /* Sky Blue Border */
+    border: 2px solid var(--accent-blue); /* Sky Blue Border */
 }
 
 .game-card:hover {
     transform: translateY(-5px);
-    border-color: #D1D646; /* Glows Lime on hover */
+    border-color: var(--accent-lime); /* Glows Lime on hover */
 }
 
 .card-image-container {
     height: 250px;
     width: 100%;
-    border-bottom: 1px solid #57C4E5;
+    border-bottom: 1px solid var(--accent-blue);
 }
 
 .card-image-container img {
@@ -114,7 +114,7 @@
 
 .game-title {
     font-weight: 600;
-    color: #EDF2EF; /* Off-White */
+    color: var(--off-white); /* Off-White */
     margin-bottom: 5px;
     white-space: nowrap;
     overflow: hidden;
@@ -122,7 +122,7 @@
 }
 
 .game-rating {
-    color: #D1D646; /* Lime highlight */
+    color: var(--accent-lime); /* Lime highlight */
     font-size: 0.9rem;
     font-weight: bold;
 }
@@ -132,11 +132,11 @@
     justify-content: center;
     align-items: center;
     height: 50vh;
-    color: #57C4E5; /* Sky Blue */
+    color: var(--accent-blue); /* Sky Blue */
 }
 
 .no-games {
-    color: #F97068; /* Coral for 'not found' text */
+    color: var(--primary-coral); /* Coral for 'not found' text */
 }
 
 @media (max-width: 768px) {

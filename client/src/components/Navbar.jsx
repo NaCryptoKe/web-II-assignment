@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import '../css/navbar.css';
-import logo from '../images/logo.jpg'
+import logo from '../images/logo.svg'
 
 const Navbar = () => {
     const { user } = useAuthContext();
@@ -52,7 +52,7 @@ const Navbar = () => {
                 ) : (
                     <>
                         <Link to="/login" className="nav-item">Login</Link>
-                        <Link to="/signup" className="nav-signup-btn">Sign Up</Link>
+                        <Link to="/register" className="nav-signup-btn">Sign Up</Link>
                     </>
                 )}
             </div>
