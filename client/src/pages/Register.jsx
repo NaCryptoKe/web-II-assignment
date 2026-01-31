@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
+import '../css/register-page.css';
 
 const RegisterPage = () => {
     const [username, setUsername] = useState('');
@@ -14,50 +15,71 @@ const RegisterPage = () => {
         try {
             const response = await register({ username, email, password });
 
-            // Based on your authController.js, success returns a message 
-            // asking to check email for OTP
             if (response.success || response.status === 'success') {
                 navigate('/verify-otp', { state: { email: email } });
             }
         } catch (err) {
-            // Error is handled by the useAuth hook state
             console.error("Registration attempt failed:", err);
         }
     };
 
     return (
-        <div className="login-container">
-            <form onSubmit={handleSubmit}>
-                <h2>Register</h2>
-                
-                <input 
-                    type="text" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
-                    placeholder="Username"
-                    required 
-                />
-                <input 
-                    type="email" 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)} 
-                    placeholder="Email"
-                    required 
-                />
-                <input 
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    placeholder="Password"
-                    required 
-                />
+        <div className="register-page-wrapper">
+            <div className="register-card">
+                <form className="register-form" onSubmit={handleSubmit}>
+                    <h2 className="register-title">Create Account</h2>
 
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? "Creating Account..." : "Register"}
-                </button>
-            </form>
-            
-            <p>Already have an account? <Link to="/login">Click Here</Link></p>
+                    {error && <div className="register-error-msg">{error}</div>}
+
+                    <div className="register-input-group">
+                        <label className="register-label">Username</label>
+                        <input
+                            type="text"
+                            className="register-input"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Pick a username"
+                            required
+                        />
+                    </div>
+
+                    <div className="register-input-group">
+                        <label className="register-label">Email</label>
+                        <input
+                            type="email"
+                            className="register-input"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="you@example.com"
+                            required
+                        />
+                    </div>
+
+                    <div className="register-input-group">
+                        <label className="register-label">Password</label>
+                        <input
+                            type="password"
+                            className="register-input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Strong password"
+                            required
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="btn-register-submit"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Creating Account..." : "Register"}
+                    </button>
+                </form>
+
+                <p className="register-footer-text">
+                    Already have an account? <Link to="/login" className="register-link">Log In Here</Link>
+                </p>
+            </div>
         </div>
     );
 };

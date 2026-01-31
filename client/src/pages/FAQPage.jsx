@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/faq-page.css';
 
 const FAQPage = () => {
     const faqData = [
@@ -9,14 +10,16 @@ const FAQPage = () => {
     ];
 
     return (
-        <div style={{ padding: '60px 20px', maxWidth: '800px', margin: '0 auto' }}>
-            <h1 style={{ textAlign: 'center', marginBottom: '40px' }}>Frequently Asked Questions</h1>
-            {faqData.map((item, index) => (
-                <div key={index} style={{ marginBottom: '30px', borderBottom: '1px solid #eee', paddingBottom: '20px' }}>
-                    <h3 style={{ color: '#007bff', marginBottom: '10px' }}>Q: {item.q}</h3>
-                    <p style={{ color: '#555', lineHeight: '1.6' }}>{item.a}</p>
-                </div>
-            ))}
+        <div className="faq-container">
+            <h1 className="faq-main-title">Frequently Asked Questions</h1>
+            <div className="faq-list">
+                {faqData.map((item, index) => (
+                    <div key={index} className="faq-item">
+                        <h3 className="faq-question">Q: {item.q}</h3>
+                        <p className="faq-answer">{item.a}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

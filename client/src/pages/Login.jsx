@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
+import '../css/login-page.css';
 
 const LoginPage = () => {
     const [identifier, setIdentifier] = useState('');
@@ -11,11 +12,10 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Identifier can be username or email
             const response = await login({ identifier, password });
 
             if (response.success) {
-                navigate(`/`); 
+                navigate(`/`);
             } else {
                 if (response?.message === 'Account not verified. A new OTP has been sent to your email.') {
                     navigate('/verify-otp', { state: { email: identifier } });
@@ -27,31 +27,50 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="login-container">
-            <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                
-                <input 
-                    type="text" 
-                    value={identifier} 
-                    onChange={(e) => setIdentifier(e.target.value)} 
-                    placeholder="Username or Email"
-                    required 
-                />
-                <input 
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    placeholder="Password"
-                    required 
-                />
+        <div className="login-page-wrapper">
+            <div className="login-card">
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <h2 className="login-title">Login</h2>
 
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? "Logging in..." : "Login"}
-                </button>
-            </form>
-            
-            <p>Dont have an account? <Link to="/register">Click Here</Link></p>
+                    {error && <div className="login-error-msg">{error}</div>}
+
+                    <div className="login-input-group">
+                        <label className="login-label">Username or Email</label>
+                        <input
+                            type="text"
+                            className="login-input"
+                            value={identifier}
+                            onChange={(e) => setIdentifier(e.target.value)}
+                            placeholder="Username or Email"
+                            required
+                        />
+                    </div>
+
+                    <div className="login-input-group">
+                        <label className="login-label">Password</label>
+                        <input
+                            type="password"
+                            className="login-input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            required
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        className="btn-login-submit"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Logging in..." : "Login"}
+                    </button>
+                </form>
+
+                <p className="login-footer-text">
+                    Don't have an account? <Link to="/register" className="login-link">Click Here</Link>
+                </p>
+            </div>
         </div>
     );
 };

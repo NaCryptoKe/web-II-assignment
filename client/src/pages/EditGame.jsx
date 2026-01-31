@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGame } from '../hooks/useGame';
+import '../css/edit-game-page.css';
 
 const EditGamePage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { fetchGameDetails, updateGame, loading } = useGame();
-    
+
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -30,10 +31,8 @@ const EditGamePage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        // Passing the clean object to the service
         const res = await updateGame(id, formData);
-        
+
         if (res.success) {
             alert("Game updated successfully!");
             navigate(`/game/${id}`);
@@ -42,45 +41,48 @@ const EditGamePage = () => {
         }
     };
 
-    if (loading) return <div style={{ padding: '50px', textAlign: 'center' }}>Loading editor...</div>;
+    if (loading) return <div className="edit-loading">Loading editor...</div>;
 
     return (
-        <div style={{ padding: '40px', maxWidth: '600px', margin: '0 auto' }}>
-            <h2>Edit Game Info</h2>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div>
-                    <label>Title</label>
-                    <input 
-                        type="text" 
-                        value={formData.title} 
-                        onChange={(e) => setFormData({...formData, title: e.target.value})} 
-                        style={{ width: '100%', padding: '10px' }}
+        <div className="edit-game-container">
+            <h2 className="edit-game-title">Edit Game Info</h2>
+            <div className="edit-divider"></div>
+
+            <form onSubmit={handleSubmit} className="edit-game-form">
+                <div className="edit-form-group">
+                    <label className="edit-label">Title</label>
+                    <input
+                        type="text"
+                        className="edit-input"
+                        value={formData.title}
+                        onChange={(e) => setFormData({...formData, title: e.target.value})}
                         required
                     />
                 </div>
-                <div>
-                    <label>Description</label>
-                    <textarea 
-                        value={formData.description} 
-                        onChange={(e) => setFormData({...formData, description: e.target.value})} 
-                        style={{ width: '100%', height: '150px', padding: '10px' }}
+                <div className="edit-form-group">
+                    <label className="edit-label">Description</label>
+                    <textarea
+                        className="edit-textarea"
+                        value={formData.description}
+                        onChange={(e) => setFormData({...formData, description: e.target.value})}
                         required
                     />
                 </div>
-                <div>
-                    <label>Price ($)</label>
-                    <input 
-                        type="number" 
-                        value={formData.price} 
-                        onChange={(e) => setFormData({...formData, price: e.target.value})} 
-                        style={{ width: '100%', padding: '10px' }}
+                <div className="edit-form-group">
+                    <label className="edit-label">Price ($)</label>
+                    <input
+                        type="number"
+                        className="edit-input"
+                        value={formData.price}
+                        onChange={(e) => setFormData({...formData, price: e.target.value})}
                     />
                 </div>
-                <div style={{ display: 'flex', gap: '10px' }}>
-                    <button type="submit" style={{ padding: '10px 20px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px' }}>
+
+                <div className="edit-action-btns">
+                    <button type="submit" className="btn-save">
                         Save Changes
                     </button>
-                    <button type="button" onClick={() => navigate(-1)} style={{ padding: '10px 20px' }}>
+                    <button type="button" className="btn-cancel" onClick={() => navigate(-1)}>
                         Cancel
                     </button>
                 </div>

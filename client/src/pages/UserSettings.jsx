@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { useUser } from '../hooks/useUser';
+import '../css/settings-page.css';
 
 const UserSettings = () => {
     const { user } = useAuthContext();
     const { updateProfile, updatePassword, deleteAccount, loading, error } = useUser();
-    
+
     const [profileData, setProfileData] = useState({ username: user?.username || '', email: user?.email || '' });
     const [passwords, setPasswords] = useState({ oldPassword: '', newPassword: '' });
 
@@ -26,42 +27,79 @@ const UserSettings = () => {
     };
 
     return (
-        <div style={{ padding: '20px', maxWidth: '400px' }}>
-            <h1>Settings</h1>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="settings-container">
+            <h1 className="settings-main-title">Account Settings</h1>
 
-            {/* Profile Section */}
-            <form onSubmit={handleProfileUpdate}>
-                <h3>Update Profile</h3>
-                <input type="text" placeholder="Username" value={profileData.username} onChange={e => setProfileData({...profileData, username: e.target.value})} /><br/>
-                <input type="email" placeholder="Email" value={profileData.email} onChange={e => setProfileData({...profileData, email: e.target.value})} /><br/>
-                <button type="submit" disabled={loading}>Update Info</button>
-            </form>
+            {error && <div className="settings-error-banner">{error}</div>}
 
-            <hr />
+            <div className="settings-grid">
+                {/* Profile Section */}
+                <div className="settings-card">
+                    <h3 className="settings-card-title">Update Profile</h3>
+                    <form className="settings-form" onSubmit={handleProfileUpdate}>
+                        <div className="settings-input-group">
+                            <label>Username</label>
+                            <input
+                                type="text"
+                                value={profileData.username}
+                                onChange={e => setProfileData({...profileData, username: e.target.value})}
+                            />
+                        </div>
+                        <div className="settings-input-group">
+                            <label>Email Address</label>
+                            <input
+                                type="email"
+                                value={profileData.email}
+                                onChange={e => setProfileData({...profileData, email: e.target.value})}
+                            />
+                        </div>
+                        <button className="btn-settings-update" type="submit" disabled={loading}>
+                            Update Info
+                        </button>
+                    </form>
+                </div>
 
-            {/* Password Section */}
-            <form onSubmit={handlePasswordUpdate}>
-                <h3>Update Password</h3>
-                <input type="password" placeholder="Old Password" value={passwords.oldPassword} onChange={e => setPasswords({...passwords, oldPassword: e.target.value})} /><br/>
-                <input type="password" placeholder="New Password" value={passwords.newPassword} onChange={e => setPasswords({...passwords, newPassword: e.target.value})} /><br/>
-                <button type="submit" disabled={loading}>Change Password</button>
-            </form>
+                {/* Password Section */}
+                <div className="settings-card">
+                    <h3 className="settings-card-title">Security</h3>
+                    <form className="settings-form" onSubmit={handlePasswordUpdate}>
+                        <div className="settings-input-group">
+                            <label>Old Password</label>
+                            <input
+                                type="password"
+                                value={passwords.oldPassword}
+                                onChange={e => setPasswords({...passwords, oldPassword: e.target.value})}
+                            />
+                        </div>
+                        <div className="settings-input-group">
+                            <label>New Password</label>
+                            <input
+                                type="password"
+                                value={passwords.newPassword}
+                                onChange={e => setPasswords({...passwords, newPassword: e.target.value})}
+                            />
+                        </div>
+                        <button className="btn-settings-update" type="submit" disabled={loading}>
+                            Change Password
+                        </button>
+                    </form>
+                </div>
 
-            <hr />
-
-            {/* Danger Zone */}
-            <section style={{ marginTop: '40px', padding: '15px', border: '1px solid red' }}>
-                <h3 style={{ color: 'red' }}>Danger Zone</h3>
-                <p>Once you delete your account, there is no going back.</p>
-                <button 
-                    onClick={deleteAccount} 
-                    style={{ backgroundColor: 'red', color: 'white' }}
-                    disabled={loading}
-                >
-                    Delete My Account
-                </button>
-            </section>
+                {/* Danger Zone */}
+                <div className="settings-card danger-zone">
+                    <h3 className="danger-title">Danger Zone</h3>
+                    <p className="danger-text">Once you delete your account, there is no going back. All purchased games and data will be permanently removed.</p>
+                    <button
+                        className="btn-danger-delete"
+                        onClick={() => {
+                            if(window.confirm("Are you absolutely sure?")) deleteAccount();
+                        }}
+                        disabled={loading}
+                    >
+                        Delete My Account
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
