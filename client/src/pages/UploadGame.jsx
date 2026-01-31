@@ -86,6 +86,7 @@ const UploadGamePage = () => {
                         type="number"
                         className="game-input"
                         placeholder="0 for Free"
+                        step={'0.01'}
                         onChange={e => setForm({...form, price: e.target.value})}
                         required
                     />
