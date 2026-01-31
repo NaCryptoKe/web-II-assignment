@@ -30,6 +30,7 @@ const CartPage = () => {
         if (res.success) {
             alert("Purchase successful! You can now download your games.");
             localStorage.removeItem('cart');
+            localStorage.clear();
             setCartItems([]);
             navigate('/my-library');
         } else {
