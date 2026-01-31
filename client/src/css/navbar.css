@@ -1,0 +1,102 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #212738; /* Your main dark color */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid #57C4E5; /* Your Sky Blue accent */
+}
+
+/* Logo Styling */
+.nav-logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-logo span {
+    color: #EDF2EF; /* Off-white */
+}
+
+/* Common Links */
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-item {
+    color: #EDF2EF;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-item:hover {
+    color: #57C4E5;
+}
+
+/* Cart Badge */
+.cart-link {
+    display: flex;
+    align-items: center;
+}
+
+.cart-badge {
+    background: #D1D646; /* Your Lime color */
+    color: #212738;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-left: 6px;
+    box-shadow: 0 0 8px rgba(209, 214, 70, 0.5);
+}
+
+/* Buttons */
+.nav-signup-btn {
+    background-color: #F97068; /* Your Coral color */
+    color: white;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.nav-signup-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.nav-admin-btn {
+    color: #F97068;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #F97068;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.nav-admin-btn:hover {
+    background-color: #F97068;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+}

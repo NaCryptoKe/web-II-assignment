@@ -1,0 +1,77 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+:root {
+    /* Brand Colors */
+    --primary-coral: #F97068;
+    --accent-lime: #D1D646;
+    --accent-blue: #57C4E5;
+    --off-white: #EDF2EF;
+    --deep-navy: #212738;
+
+    /* Theme Variables - Now Locked to Dark */
+    --bg-color: #212738;
+    --text-main: #EDF2EF;
+    --text-muted: #abb2bf;
+    --card-bg: #2b3245; /* Slightly lighter navy for cards to pop against bg */
+}
+
+/* THE STICKY FOOTER FIX */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Global Reset & Typography */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--accent-lime);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--deep-navy);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-lime);
+}

@@ -20,21 +20,6 @@ export async function fetchAllUsers() {
     return apiRequest("/admin/users", { method: "GET" });
 }
 
-export async function fetchAllTags() {
-    return apiRequest("/admin/tags", { method: "GET" });
-}
-
-export async function addTag(name) {
-    return apiRequest("/admin/tags", { 
-        method: "POST", 
-        body: JSON.stringify({ name }) 
-    });
-}
-
-export async function deleteTag(id) {
-    return apiRequest(`/admin/tags/${id}`, { method: "DELETE" });
-}
-
 export async function fetchRevenueData() {
     return apiRequest("/admin/revenue", { method: "GET" });
 }

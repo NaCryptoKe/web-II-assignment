@@ -1,0 +1,177 @@
+/* game-details-page.css - Strictly using CSS Variables */
+
+.gd-container {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.gd-main-content {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.gd-poster {
+    width: 350px;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.gd-info-pane {
+    flex: 1;
+    min-width: 320px;
+}
+
+.gd-title {
+    font-size: 3rem;
+    color: var(--text-main);
+    margin: 0 0 15px 0;
+}
+
+.gd-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.gd-rating {
+    color: var(--accent-lime);
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.gd-review-count {
+    color: var(--accent-blue);
+}
+
+.gd-owned-badge {
+    padding: 6px 14px;
+    background-color: var(--accent-lime);
+    color: var(--deep-navy);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.gd-description {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.gd-price-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 5px solid var(--accent-blue);
+    margin-bottom: 35px;
+}
+
+.gd-price-tag {
+    color: var(--accent-lime);
+    margin: 10px 0 0 0;
+    font-size: 2.2rem;
+}
+
+/* Actions */
+.gd-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-gd-primary {
+    flex: 2;
+    padding: 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.btn-download { background-color: var(--accent-lime); color: var(--deep-navy); }
+.btn-add { background-color: var(--accent-blue); color: var(--deep-navy); }
+.btn-remove { background-color: var(--primary-coral); color: var(--off-white); }
+
+.btn-gd-secondary {
+    flex: 1;
+    background: transparent;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.gd-divider {
+    border: none;
+    border-top: 1px solid var(--accent-blue);
+    opacity: 0.3;
+    margin: 60px 0;
+}
+
+/* Reviews */
+.gd-review-form-container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--accent-blue);
+    margin-bottom: 40px;
+}
+
+.gd-form-group { margin-bottom: 20px; }
+.gd-form-group label { display: block; margin-bottom: 10px; color: var(--accent-blue); font-weight: 600; }
+
+.gd-select, .gd-textarea {
+    width: 100%;
+    padding: 12px;
+    background: var(--deep-navy);
+    border: 1px solid var(--accent-blue);
+    color: var(--off-white);
+    border-radius: 6px;
+}
+
+.gd-textarea { height: 120px; }
+
+.btn-gd-submit {
+    padding: 12px 30px;
+    background-color: var(--accent-lime);
+    color: var(--deep-navy);
+    border: none;
+    border-radius: 6px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* Review Item Styles */
+.review-item {
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(87, 196, 229, 0.2);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.review-username { color: var(--accent-blue); }
+.review-stars { color: var(--accent-lime); }
+.review-text { color: var(--text-main); opacity: 0.8; line-height: 1.6; }
+
+.no-reviews { color: var(--text-main); opacity: 0.5; text-align: center; padding: 50px; }
+.game-details-loading { text-align: center; padding: 100px; color: var(--accent-blue); }
+
+@media (max-width: 768px) {
+    .gd-poster { width: 100%; height: auto; }
+    .gd-actions { flex-direction: column; }
+}

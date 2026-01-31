@@ -1,0 +1,90 @@
+/* footer-name.css */
+
+.footer {
+    /* Always use Deep Navy for the footer regardless of theme for that 'Game Vault' look */
+    background-color: #212738;
+    color: #EDF2EF;
+    padding: 60px 50px 20px 50px;
+    border-top: 3px solid #57C4E5; /* Sky Blue accent */
+    flex-shrink: 0; /* Prevents the footer from squishing */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #57C4E5; /* Sky Blue */
+}
+
+.footer-brand span {
+    color: #EDF2EF;
+}
+
+.footer-description {
+    color: #EDF2EF;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.footer-heading {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #F97068; /* Coral Accent */
+}
+
+.footer-link {
+    display: block;
+    color: #EDF2EF;
+    opacity: 0.8;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.footer-link:hover {
+    color: #D1D646; /* Lime Accent */
+    opacity: 1;
+    padding-left: 5px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(87, 196, 229, 0.2); /* Faded Sky Blue */
+    color: #EDF2EF;
+    opacity: 0.5;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-socials {
+        justify-content: center;
+    }
+}

@@ -6,21 +6,20 @@ export const useAdmin = () => {
     const context = useContext(AdminContext);
     if (!context) throw new Error("useAdmin must be used within an AdminProvider");
 
-    const { setGames, setUsers, setTags, setRevenue, setAdminLoading } = context;
+    const { setGames, setUsers, setRevenue, setAdminLoading } = context;
 
     const refreshDashboard = async () => {
         setAdminLoading(true);
         try {
-            const [gamesRes, usersRes, tagsRes, revRes] = await Promise.all([
+            const [gamesRes, usersRes, revRes] = await Promise.all([
                 adminService.fetchAllGames(),
                 adminService.fetchAllUsers(),
-                adminService.fetchAllTags(),
                 adminService.fetchRevenueData()
             ]);
 
+            // Assuming backend returns { success: true, data: { pending: [], active: [], rejected: [] } }
             if (gamesRes.success) setGames(gamesRes.data);
             if (usersRes.success) setUsers(usersRes.data);
-            if (tagsRes.success) setTags(tagsRes.data);
             if (revRes.success) setRevenue(revRes.data);
         } catch (err) {
             console.error("Dashboard Load Error:", err);
@@ -35,9 +34,17 @@ export const useAdmin = () => {
         return res;
     };
 
+    // --- ADDED THIS FUNCTION ---
+    const handleRejectGame = async (id) => {
+        const res = await adminService.rejectGame(id);
+        if (res.success) refreshDashboard();
+        return res;
+    };
+
     return {
         ...context,
         refreshDashboard,
-        handleAcceptGame
+        handleAcceptGame,
+        handleRejectGame // Export the new function
     };
 };

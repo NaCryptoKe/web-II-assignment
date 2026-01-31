@@ -1,0 +1,118 @@
+/* edit-game-page.css - Strictly using CSS Variables */
+
+.edit-game-container {
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.edit-game-title {
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.edit-divider {
+    height: 4px;
+    width: 50px;
+    background-color: var(--accent-blue);
+    margin-bottom: 40px;
+    border-radius: 2px;
+}
+
+.edit-game-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--accent-blue);
+}
+
+.edit-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.edit-label {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.edit-input,
+.edit-textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--accent-blue);
+    background-color: var(--deep-navy);
+    color: var(--off-white);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.edit-input:focus,
+.edit-textarea:focus {
+    border-color: var(--accent-lime);
+}
+
+.edit-textarea {
+    height: 180px;
+    resize: vertical;
+}
+
+.edit-action-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-save {
+    flex: 2;
+    padding: 14px;
+    background-color: var(--accent-lime);
+    color: var(--deep-navy);
+    border: none;
+    border-radius: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.btn-cancel {
+    flex: 1;
+    padding: 14px;
+    background-color: transparent;
+    color: var(--primary-coral);
+    border: 2px solid var(--primary-coral);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: var(--primary-coral);
+    color: var(--off-white);
+}
+
+.btn-save:hover {
+    filter: brightness(1.1);
+}
+
+.edit-loading {
+    padding: 100px;
+    text-align: center;
+    color: var(--accent-blue);
+    font-weight: 800;
+}
+
+@media (max-width: 480px) {
+    .edit-action-btns {
+        flex-direction: column;
+    }
+}

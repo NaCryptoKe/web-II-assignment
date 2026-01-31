@@ -1,0 +1,112 @@
+/* register-page.css - Strictly using CSS Variables */
+
+.register-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.register-card {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 12px;
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.register-title {
+    text-align: center;
+    color: var(--text-main);
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.register-error-msg {
+    background-color: var(--primary-coral);
+    color: var(--off-white);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.register-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.register-label {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.register-input {
+    padding: 12px;
+    background-color: var(--deep-navy);
+    border: 1px solid var(--accent-blue);
+    color: var(--off-white);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.register-input:focus {
+    border-color: var(--accent-lime);
+}
+
+.btn-register-submit {
+    margin-top: 10px;
+    padding: 14px;
+    background-color: var(--accent-blue);
+    color: var(--deep-navy);
+    border: none;
+    border-radius: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.1s, filter 0.2s;
+}
+
+.btn-register-submit:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+.btn-register-submit:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn-register-submit:disabled {
+    background-color: var(--accent-blue);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.register-footer-text {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--text-main);
+    opacity: 0.8;
+}
+
+.register-link {
+    color: var(--accent-lime);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}

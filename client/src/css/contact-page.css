@@ -1,0 +1,94 @@
+/* contact-page.css - Strictly using CSS Variables from main.css */
+
+.contact-container {
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-title {
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.contact-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--accent-blue);
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--accent-lime);
+}
+
+.form-textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.contact-submit-btn {
+    padding: 15px;
+    background-color: var(--primary-coral);
+    color: var(--off-white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.1s;
+}
+
+.contact-submit-btn:hover {
+    filter: brightness(1.1);
+}
+
+.contact-submit-btn:active {
+    transform: scale(0.98);
+}
+
+.contact-info {
+    marginTop: 50px;
+    text-align: center;
+    border-top: 1px solid var(--accent-blue);
+    padding-top: 30px;
+    color: var(--text-main);
+    line-height: 2;
+}
+
+.contact-info strong {
+    color: var(--accent-lime);
+}

@@ -1,0 +1,56 @@
+/* terms-page.css - Strictly using CSS Variables */
+
+.terms-container {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.terms-title {
+    color: var(--text-main);
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.terms-date {
+    color: var(--accent-blue);
+    font-weight: 600;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.terms-section {
+    margin-top: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(87, 196, 229, 0.1); /* Faint Sky Blue divider */
+}
+
+.terms-heading {
+    color: var(--accent-blue);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.terms-text {
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+/* Specific highlight for legal emphasis */
+.terms-section:nth-child(odd) .terms-heading {
+    color: var(--accent-lime);
+}
+
+@media (max-width: 600px) {
+    .terms-container {
+        padding: 40px 15px;
+    }
+    .terms-title {
+        font-size: 2rem;
+    }
+}
